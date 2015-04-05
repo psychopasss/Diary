@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 
+    	程序相关信息
+     -->
+    <string name="app_name">日记本</string>
+    <string name="diary_info">日 记 本</string>
+    <string name="diary_version">版本号：1.5</string>
+    <string name="app_designer">Design By NOLE</string>
+    <string name="designer_website"><a href="http://weibo.cn/yanzhenyu1992">我的微博</a></string>
+     <!-- 
+    	程序-按钮
+     -->  
+    <string name="insert_date">插入日期</string>
+    <string name="diary_lable">标题</string>
+    <string name="action_setting">设置</string>
+    <string name="insert_diary">新建</string>
+    <string name="diary_about">关于</string>
+    <string name="diary_exit">退出</string>
+    <string name="diary_save">保存</string>
+    <string name="diary_update">修改</string>
+    <string name="diary_delete">删除</string>
+    <string name="diary_label_def">未命名</string>
+    <string name="diary_list">返回</string>
+    <!-- 
+    	程序-activity的标题
+    -->
+    <string name="title_activity_list">日记本</string>
+    <string name="title_activity_insert">新建日记</string>
+    <string name="title_activity_detail">日记详情</string>
+    <string name="title_activity_update">修改日记</string>
+    <string name="title_activity_info">关于</string>
+    <string name="search">搜索</string>
+    <string name="title_activity_setting">设置</string>
+    <!--
+        设置页面与日记锁页面
+    -->
+    <string name="password">123</string>
+    <string name="finderror">未查找到相应日记！</string>
+    <string name="lock_hint">请输入密码</string>
+    <string name="lock_button">解锁</string>
+
+</resources>
