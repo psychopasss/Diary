@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:textColor="#000"
-            android:textSize="17sp" />
+            android:textSize="17sp"/>
     </ScrollView>
 
 </RelativeLayout>
