@@ -14,15 +14,15 @@ import android.widget.Toast;
 
 
 public class SettingActivity extends ActionBarActivity {
-    private SharedPreferences preferences;
-    private SharedPreferences.Editor editor = preferences.edit();
+     SharedPreferences preferences;
+     SharedPreferences.Editor editor ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         preferences = getSharedPreferences("diary", MODE_PRIVATE);
-
+        editor = preferences.edit();
         Button button = (Button) findViewById(R.id.changepass);
         Switch open = (Switch) findViewById(R.id.lock);
 
@@ -40,10 +40,10 @@ public class SettingActivity extends ActionBarActivity {
                 if (isChecked) {
                     editor.putBoolean("lockable", true);
                     editor.putString("key", preferences.getString("key",preferences.getString("key","123")));
-                    editor.commit();
+                    editor.apply();
                 } else {
                     editor.putBoolean("lockable", false);
-                    editor.commit();
+                    editor.apply();
                 }
             }
         });
@@ -61,7 +61,7 @@ public class SettingActivity extends ActionBarActivity {
                     if (!(newpassword.equals(""))) {
                         if (newpassword.equals(renewpassword)) {
                             editor.putString("key", newpassword);
-                            editor.commit();
+                            editor.apply();
                             Toast.makeText(SettingActivity.this, "密码修改成功!", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(SettingActivity.this, "新密码输入不一致，请重新输入!", Toast.LENGTH_SHORT).show();
