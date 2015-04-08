@@ -59,7 +59,7 @@ public class ListActivity extends ActionBarActivity {
                             String id1 = c1.getString(0);
                             intent.putExtra("id", id1);
                             startActivity(intent);
-                        }
+                         }
                     });
                 }
                 return true;
