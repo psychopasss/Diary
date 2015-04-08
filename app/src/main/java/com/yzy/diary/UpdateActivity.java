@@ -2,7 +2,6 @@ package com.yzy.diary;
 
 import com.yzy.diary.dao.DBManager;
 import com.yzy.diary.model.Diary;
-
 import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
