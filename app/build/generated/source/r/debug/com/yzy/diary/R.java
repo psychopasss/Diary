@@ -1308,10 +1308,9 @@ containing a value of this type.
         public static final int ic_action_search=0x7f020036;
         public static final int ic_content_discard=0x7f020037;
         public static final int ic_content_edit=0x7f020038;
-        public static final int ic_launcher=0x7f020039;
-        public static final int ic_navigation_accept=0x7f02003a;
-        public static final int ic_navigation_cancel=0x7f02003b;
-        public static final int list_item=0x7f02003c;
+        public static final int ic_navigation_accept=0x7f020039;
+        public static final int ic_navigation_cancel=0x7f02003a;
+        public static final int list_item=0x7f02003b;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0a004a;

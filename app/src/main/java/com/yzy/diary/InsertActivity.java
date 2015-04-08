@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.yzy.dao.DBManager;
+import com.yzy.diary.dao.DBManager;
 import com.yzy.diary.model.Diary;
 
 

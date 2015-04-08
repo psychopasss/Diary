@@ -14,15 +14,14 @@ import android.widget.Toast;
 
 
 public class SettingActivity extends ActionBarActivity {
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor = preferences.edit();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         preferences = getSharedPreferences("diary", MODE_PRIVATE);
-        editor = preferences.edit();
 
         Button button = (Button) findViewById(R.id.changepass);
         Switch open = (Switch) findViewById(R.id.lock);

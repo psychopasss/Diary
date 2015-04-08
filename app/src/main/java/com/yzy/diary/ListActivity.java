@@ -15,7 +15,7 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-import com.yzy.dao.DBManager;
+import com.yzy.diary.dao.DBManager;
 
 @SuppressWarnings("ALL")
 public class ListActivity extends ActionBarActivity {

@@ -1,6 +1,6 @@
 package com.yzy.diary;
 
-import com.yzy.dao.DBManager;
+import com.yzy.diary.dao.DBManager;
 import com.yzy.diary.model.Diary;
 
 import android.support.v7.app.ActionBarActivity;
@@ -24,8 +24,8 @@ public class UpdateActivity extends ActionBarActivity {
 		diary=(Diary) intent.getSerializableExtra("diary");
 		EditText label = (EditText) findViewById(R.id.activity_update_editText_diarylabel);
 		EditText content = (EditText) findViewById(R.id.activity_update_editText_diarycontent);
-		label.setText(diary.label);
-		content.setText(diary.content);
+		label.setText(diary.getLabel());
+		content.setText(diary.getContent());
 	}
 
 	@Override

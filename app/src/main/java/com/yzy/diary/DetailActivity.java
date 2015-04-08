@@ -1,6 +1,6 @@
 package com.yzy.diary;
 
-import com.yzy.dao.DBManager;
+import com.yzy.diary.dao.DBManager;
 import com.yzy.diary.model.Diary;
 
 import android.support.v7.app.ActionBarActivity;
@@ -25,8 +25,8 @@ public class DetailActivity extends ActionBarActivity {
 		 Intent intent = getIntent();
 		 id=intent.getStringExtra("id");
 		 diary = mgr.query(id);
-		 diary_label.setText(diary.label);
-		 diary_content.setText(diary.content);
+		 diary_label.setText(diary.getLabel());
+		 diary_content.setText(diary.getContent());
 	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
