@@ -4,27 +4,27 @@
     tools:context="com.yzy.test.ListActivity">
     <item
         android:id="@+id/list_search"
-        android:icon="@drawable/ic_action_search"
         android:title="@string/search"
-        app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="ifRoom|collapseActionView" />
-    <item
-        android:id="@+id/insert_diary"
-        android:icon="@drawable/ic_action_edit"
-        android:title="@string/insert_diary"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/diary_setting"
-        android:icon="@drawable/ic_action_about"
-        android:title="@string/action_setting" />
-    <item
-        android:id="@+id/diary_about"
-        android:icon="@drawable/ic_action_about"
-        android:title="@string/diary_about" />
-    <item
-        android:id="@+id/diary_exit"
-        android:icon="@drawable/ic_navigation_cancel"
-        android:title="@string/diary_exit" />
+    <!--<item-->
+        <!--android:id="@+id/insert_diary"-->
+        <!--android:icon="@drawable/ic_action_edit"-->
+        <!--android:title="@string/insert_diary"-->
+         <!--/>-->
+    <!--<item-->
+        <!--android:id="@+id/diary_setting"-->
+        <!--android:icon="@drawable/ic_action_about"-->
+        <!--android:title="@string/action_setting" />-->
+    <!--<item-->
+        <!--android:id="@+id/diary_about"-->
+        <!--android:icon="@drawable/ic_action_about"-->
+        <!--android:title="@string/diary_about" />-->
+    <!--<item-->
+        <!--android:id="@+id/diary_exit"-->
+        <!--android:icon="@android:drawable/ic_delete"-->
+        <!--android:title="@string/diary_exit"-->
+        <!--/>-->
 
 
 </menu>

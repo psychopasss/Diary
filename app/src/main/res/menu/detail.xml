@@ -4,7 +4,7 @@
     tools:context="com.yzy.diary.DetailActivity">
     <item
         android:id="@+id/diary_update"
-        android:icon="@drawable/ic_action_edit"
+        android:icon="@drawable/ic_content_edit"
         android:title="@string/diary_update"
         app:showAsAction="ifRoom"/>
     <item

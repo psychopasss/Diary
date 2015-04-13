@@ -24,8 +24,8 @@ public class DBManager {
     public void add(Diary diary) {
         db.beginTransaction();    //开始事务
         try {
-            db.execSQL("insert into diary(diary_label,diary_content) values(?,?)",
-                    new Object[]{diary.getLabel(), diary.getContent()});
+            db.execSQL("insert into diary(diary_label,diary_content,diary_mood,diary_weather) values(?,?,?,?)",
+                    new Object[]{diary.getLabel(), diary.getContent(),diary.getMood(),diary.getWeather()});
             db.setTransactionSuccessful();    //设置事务成功完成
         } finally {
             db.endTransaction();    //结束事务
@@ -38,8 +38,8 @@ public class DBManager {
      *
      */
     public void updateDiary(Diary diary) {
-            db.execSQL("update diary set diary_label = ? , diary_content = ? where _id = ? ",
-                    new String[]{diary.getLabel(), diary.getContent(), String.valueOf(diary.get_id())});
+            db.execSQL("update diary set diary_label = ? , diary_content = ?,diary_mood = ?,diary_weather = ? where _id = ? ",
+                    new String[]{diary.getLabel(), diary.getContent(),diary.getMood(),diary.getWeather(),String.valueOf(diary.get_id())});
     }
 
     /**
@@ -66,6 +66,8 @@ public class DBManager {
             diary.setLabel(c.getString(c.getColumnIndex("diary_label")));
             diary.setContent(c.getString(c.getColumnIndex("diary_content")));
             diary.setDate(Timestamp.valueOf(c.getString(c.getColumnIndex("diary_date"))));
+            diary.setMood(c.getString(c.getColumnIndex("diary_mood")));
+            diary.setWeather(c.getString(c.getColumnIndex("diary_weather")));
             diaries.add(diary);
         }
         c.close();

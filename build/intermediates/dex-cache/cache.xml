@@ -9,18 +9,25 @@
         <dex dex="E:\Android\workspace\diary1\app\build\intermediates\pre-dexed\release\internal_impl-21.0.3-62665d2752a920e79a9b7b1256bf67e58c9ad0ae.jar" />
     </item>
     <item
-        jar="E:\lastAndroid\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
-        <dex dex="E:\Android\workspace\diary1\app\build\intermediates\pre-dexed\release\support-annotations-21.0.3-9d21cc905c8db473850d7a5ba0aa56fb42377063.jar" />
-    </item>
-    <item
         jar="E:\Android\workspace\diary1\app\build\intermediates\exploded-aar\com.android.support\support-v4\21.0.3\classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="E:\Android\workspace\diary1\app\build\intermediates\pre-dexed\release\classes-e01462e04f377ac264db77b3bbb41fb29594cfe7.jar" />
+    </item>
+    <item
+        jar="E:\Android\workspace\diary1\app\libs\systembartint-1.0.4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="06404f77b92ec723cc132e825afe85a07da85ee6">
+        <dex dex="E:\Android\workspace\diary1\app\build\intermediates\pre-dexed\debug\systembartint-1.0.4-aef07e6dd85d8574990af6ef2138bc5ecc13ef34.jar" />
+    </item>
+    <item
+        jar="E:\lastAndroid\sdk\extras\android\m2repository\com\android\support\support-annotations\21.0.3\support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="E:\Android\workspace\diary1\app\build\intermediates\pre-dexed\release\support-annotations-21.0.3-9d21cc905c8db473850d7a5ba0aa56fb42377063.jar" />
     </item>
     <item
         jar="E:\Android\workspace\diary1\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\21.0.3\classes.jar"

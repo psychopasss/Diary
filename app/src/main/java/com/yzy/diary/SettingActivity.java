@@ -1,8 +1,10 @@
 package com.yzy.diary;
 
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 
 public class SettingActivity extends ActionBarActivity {
@@ -21,6 +25,13 @@ public class SettingActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(R.color.colorPrimary);
+        }
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         preferences = getSharedPreferences("diary", MODE_PRIVATE);
         editor = preferences.edit();
         Button button = (Button) findViewById(R.id.changepass);
@@ -63,6 +74,7 @@ public class SettingActivity extends ActionBarActivity {
                             editor.putString("key", newpassword);
                             editor.apply();
                             Toast.makeText(SettingActivity.this, "密码修改成功!", Toast.LENGTH_SHORT).show();
+                            finish();
                         } else {
                             Toast.makeText(SettingActivity.this, "新密码输入不一致，请重新输入!", Toast.LENGTH_SHORT).show();
                         }

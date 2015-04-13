@@ -12,14 +12,18 @@ public class Diary implements Serializable {
     private String label;
     private String content;
     private Timestamp date;
+    private String weather;
+    private String mood;
 
     public Diary(){
 
     }
 
-    public Diary(String label, String content) {
+    public Diary(String label, String content, String mood, String weather) {
         this.label = label;
         this.content = content;
+        this.mood = mood;
+        this.weather = weather;
     }
 
     public void setLabel(String label) {
@@ -52,5 +56,21 @@ public class Diary implements Serializable {
 
     public void setDate(Timestamp date) {
         this.date = date;
+    }
+
+    public String getWeather() {
+        return weather;
+    }
+
+    public void setWeather(String weather) {
+        this.weather = weather;
+    }
+
+    public String getMood() {
+        return mood;
+    }
+
+    public void setMood(String mood) {
+        this.mood = mood;
     }
 }

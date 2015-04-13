@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="update_logs">#0097A7</color>
+
+    <color name="colorPrimaryDark">#0097A7</color>
+    <color name="colorPrimary">#00BCD4</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="textColorPrimary">#212121</color>
+
+    <color name="style_color_accent">#FF5722</color>
+    <color name="fab_color_shadow">#FF5722</color>
+    <color name="fab_color_pressed">#FF5722</color>
+</resources>

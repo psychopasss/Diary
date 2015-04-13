@@ -3,11 +3,12 @@
     <!-- 
     	程序相关信息
      -->
-    <string name="app_name">日记本</string>
-    <string name="diary_info">日 记 本</string>
-    <string name="diary_version">版本号：1.5</string>
-    <string name="app_designer">Design By NOLE</string>
+    <string name="app_name">日日记</string>
+    <string name="diary_info">日 日 记</string>
+    <string name="diary_version">版本号：2.1</string>
+    <string name="app_designer">Design By Zain</string>
     <string name="designer_website"><a href="http://izain.info">个人博客</a></string>
+    <string name="activity_info_textView_update_logs">更新日志</string>
      <!-- 
     	程序-按钮
      -->  
@@ -25,7 +26,7 @@
     <!-- 
     	程序-activity的标题
     -->
-    <string name="title_activity_list">日记本</string>
+    <string name="title_activity_list">日日记</string>
     <string name="title_activity_insert">新建日记</string>
     <string name="title_activity_detail">日记详情</string>
     <string name="title_activity_update">修改日记</string>
@@ -39,5 +40,61 @@
     <string name="finderror">未查找到相应日记！</string>
     <string name="lock_hint">请输入密码</string>
     <string name="lock_button">解锁</string>
+    <!--
+        更新日志dialog界面
+    -->
+    <string name="update_logs">
+        ------------------v2.1------------------\n
+        新增为日记添加心情，天气功能。\n
+        泡泡表情更形象。\n
+        增加浮动按钮快捷写日记。\n
+        数据库结构优化。\n
+        2015-4-13\n
+        ------------------v2.0------------------\n
+        界面完全改版：\n
+        实现系统沉浸栏，采用Material Design设计；\n
+        采用cyan配色，更加小清新；\n
+        实现侧边菜单，更改搜索样式；\n
+        还有许多细节改变，请自己体会。\n
+        2015-4-10\n
+        ------------------v1.6------------------\n
+        紧急更新：\n
+        将日记数据保存在SD卡上，\n
+        防止删除应用后以前写的日记消失，\n
+        用户可以自己备份日记数据；\n
+        设置中增加查看更新日志按钮；\n
+        修复bug：\n
+        1. 搜索为空时，“未查找到相应日记”一直出现。\n
+        2015-4-9\n
+        ------------------v1.5------------------\n
+        添加日记查询功能；\n
+        添加日记锁，更好的保护隐私；\n
+        添加日记锁开关更人性化；\n
+        实现日记锁的密码修改。\n
+        2015-3-30\n
+        ------------------v1.1------------------\n
+        添加修改日记功能；\n
+        日记列表中显示写下日记的时间；\n
+        滚动效果更平滑。\n
+        2015-3-28\n
+        ------------------v1.0------------------\n
+        实现基本功能；\n
+        显示日记列表；\n
+        日记的新建，删除；\n
+        查看日记的详细内容。\n
+        2015-3-26
+    </string>
+    <string name="title_alertDialog">更新日志</string>
 
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="title_activity_backup">日记备份</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="backup_content">
+        本日记软件的日记数据保存在SD卡根目录下diary文件夹下；\n
+        具体路径“/diary/diary.db3”；\n
+        如需备份日记数据，请把diary.db3文件保存在电脑上或者其他安全的地方。\n
+        恢复日记时只需要放在原位置（/diary/）下，就行了。</string>
 </resources>
