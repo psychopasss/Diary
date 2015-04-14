@@ -9,9 +9,9 @@
     <string name="app_designer">Design By Zain</string>
     <string name="designer_website"><a href="http://izain.info">个人博客</a></string>
     <string name="activity_info_textView_update_logs">更新日志</string>
-     <!-- 
-    	程序-按钮
-     -->  
+    <!--
+       程序-按钮
+    -->
     <string name="insert_date">插入日期</string>
     <string name="diary_lable">标题</string>
     <string name="action_setting">设置</string>

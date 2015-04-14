@@ -2,10 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yzy.diary.SettingActivity"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context="com.yzy.diary.SettingActivity">
 
-    <include layout="@layout/mytoolbar"/>
+    <include layout="@layout/mytoolbar" />
 
     <EditText
         android:id="@+id/oldpassword"
@@ -103,26 +103,24 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/textView5"
         android:layout_toEndOf="@+id/textView6"
-        android:layout_toRightOf="@+id/textView6"
-        />
+        android:layout_toRightOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Setting"
-        android:textSize="20sp"
-        android:layout_below="@id/toolbar"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/toolbar"
+        android:text="Setting"
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="140dp"
         android:layout_height="wrap_content"
-        android:text="注意:第一次使用日记锁时，默认密码123，要更换，请修改！"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_below="@id/toolbar"
         android:layout_alignParentRight="true"
-        />
+        android:layout_below="@id/toolbar"
+        android:text="注意:第一次使用日记锁时，默认密码123，要更换，请修改！"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 </RelativeLayout>

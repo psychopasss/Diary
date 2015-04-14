@@ -6,13 +6,13 @@
         android:id="@+id/diary_save"
         android:icon="@drawable/ic_navigation_accept"
         android:title="@string/diary_save"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/diary_list"
         android:icon="@drawable/ic_navigation_cancel"
         android:title="@string/diary_list"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 
 
 </menu>

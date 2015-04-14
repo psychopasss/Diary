@@ -18,8 +18,8 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 
 public class SettingActivity extends ActionBarActivity {
-     SharedPreferences preferences;
-     SharedPreferences.Editor editor ;
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class SettingActivity extends ActionBarActivity {
         if (preferences.getBoolean("lockable", false)) {
             open.setChecked(true);
         } else {
-                open.setChecked(false);
+            open.setChecked(false);
         }
 
         open.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -50,7 +50,7 @@ public class SettingActivity extends ActionBarActivity {
                 // TODO Auto-generated method stub
                 if (isChecked) {
                     editor.putBoolean("lockable", true);
-                    editor.putString("key", preferences.getString("key",preferences.getString("key","123")));
+                    editor.putString("key", preferences.getString("key", preferences.getString("key", "123")));
                     editor.apply();
                 } else {
                     editor.putBoolean("lockable", false);

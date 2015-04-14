@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridView"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <GridView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gridView"
-        android:numColumns="4"
-        android:layout_margin="2dp"
-        android:columnWidth="30dp" />
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:numColumns="4"
+    android:padding="2dp" />

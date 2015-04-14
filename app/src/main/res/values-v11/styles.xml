@@ -9,6 +9,6 @@
 
         <item name="colorPrimary">@color/colorPrimary</item>
     </style>
- <!-- Application theme. -->
+    <!-- Application theme. -->
 
 </resources>

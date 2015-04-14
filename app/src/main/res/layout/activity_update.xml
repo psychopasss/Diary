@@ -43,26 +43,26 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"/>
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/activity_update_editText_diarylabel"
+        android:layout_alignEnd="@+id/activity_update_editText_diarycontent"
         android:layout_alignRight="@+id/activity_update_editText_diarycontent"
-        android:layout_alignEnd="@+id/activity_update_editText_diarycontent">
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:id="@+id/update_mood"
-            />
+        android:layout_alignTop="@+id/activity_update_editText_diarylabel"
+        android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/update_mood"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+        <ImageView
+            android:id="@+id/update_weather"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/update_weather"
             android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            />
+            android:layout_marginStart="5dp" />
     </LinearLayout>
 
 

@@ -2,50 +2,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yzy.diary.DetailActivity"
     android:fitsSystemWindows="true"
-    >
+    tools:context="com.yzy.diary.DetailActivity">
 
-    <include layout="@layout/mytoolbar"/>
-    <!--<LinearLayout-->
-        <!--android:orientation="horizontal"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignTop="@+id/scrollView1"-->
-        <!--android:layout_alignRight="@+id/scrollView1"-->
-        <!--android:layout_alignEnd="@+id/scrollView1">-->
-        <!--<ImageView-->
-            <!--android:layout_width="30dp"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:id="@+id/detail_mood"-->
-            <!--/>-->
+    <include layout="@layout/mytoolbar" />
 
-        <!--<ImageView-->
-            <!--android:layout_width="30dp"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:id="@+id/detail_weather"-->
-            <!--android:layout_marginLeft="5dp"-->
-            <!--android:layout_marginStart="5dp"-->
-            <!--/>-->
-    <!--</LinearLayout>-->
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="8dp"
+        android:layout_below="@id/toolbar"
         android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp">
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp">
 
-    <TextView
-        android:id="@+id/activity_detail_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:textColor="#000"
-        android:textSize="17sp"
-        />
+        <TextView
+            android:id="@+id/activity_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:textColor="#000"
+            android:textIsSelectable="true"
+            android:textSize="17sp" />
     </ScrollView>
 </RelativeLayout>

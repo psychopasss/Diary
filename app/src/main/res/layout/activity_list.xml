@@ -3,68 +3,67 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.yzy.diary.ListActivity"
-    android:fitsSystemWindows="true">
+    tools:context="com.yzy.diary.ListActivity">
 
-    <include layout="@layout/mytoolbar"/>
+    <include layout="@layout/mytoolbar" />
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/dl_left"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        >
+        android:layout_below="@id/toolbar">
         <!--主布局-->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ListView
                 android:id="@+id/activity_list_listview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="5dp"
-                />
-                <!--android:divider="@color/background_floating_material_light"-->
-                <!--android:dividerHeight="8dip"-->
+                android:elevation="5dp" />
+            <!--android:divider="@color/background_floating_material_light"-->
+            <!--android:dividerHeight="8dip"-->
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="124dp"
                 android:text="@string/finderror"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:visibility="invisible"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="124dp" />
+                android:visibility="invisible" />
 
             <ImageButton
-                android:contentDescription="@null"
+                android:id="@+id/fab"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:src="@drawable/ic_new"
-                android:layout_marginBottom="16dp"
-                android:tint="@android:color/white"
-                android:id="@+id/fab"
-                android:elevation="8dp"
-                android:background="@drawable/ripple"
+                android:layout_alignEnd="@+id/activity_list_listview"
                 android:layout_alignParentBottom="true"
                 android:layout_alignRight="@+id/activity_list_listview"
-                android:layout_alignEnd="@+id/activity_list_listview"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginEnd="16dp" />
+                android:background="@drawable/ripple"
+                android:contentDescription="@null"
+                android:elevation="8dp"
+                android:src="@drawable/ic_new"
+                android:tint="@android:color/white" />
         </RelativeLayout>
         <!--侧滑菜单-->
         <LinearLayout
             android:layout_width="200dp"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
-            android:layout_gravity="start">
+            android:layout_gravity="start"
+            android:background="@android:color/white">
+
             <ListView
                 android:id="@+id/lv_left_menu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:divider="@null"
-                />
+                android:divider="@null" />
         </LinearLayout>
     </android.support.v4.widget.DrawerLayout>
 

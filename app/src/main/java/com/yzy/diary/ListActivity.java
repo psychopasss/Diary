@@ -21,8 +21,10 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.yzy.diary.dao.DBManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +48,7 @@ public class ListActivity extends ActionBarActivity {
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ListActivity.this,InsertActivity.class));
+                startActivity(new Intent(ListActivity.this, InsertActivity.class));
             }
         });
 
@@ -72,6 +74,7 @@ public class ListActivity extends ActionBarActivity {
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
             }
+
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -81,30 +84,30 @@ public class ListActivity extends ActionBarActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);//设置drawer的开关监听
 
         /*填充侧滑菜单列表*/
-        simpleAdapter = new SimpleAdapter(this,getData() ,
+        simpleAdapter = new SimpleAdapter(this, getData(),
                 R.layout.drawerlayout_left_item,
-                new String[]{"title","img"},
-                new int[]{R.id.dl_left_item_label,R.id.dl_left_item_imageView});
+                new String[]{"title", "img"},
+                new int[]{R.id.dl_left_item_label, R.id.dl_left_item_imageView});
         lvLeftMenu.setAdapter(simpleAdapter);
 
         /* 为侧滑菜单中的选项绑定将要启动的activity*/
         lvLeftMenu.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                switch (position){
-                    case 0 :
-                        startActivity(new Intent(ListActivity.this,InsertActivity.class));
+                switch (position) {
+                    case 0:
+                        startActivity(new Intent(ListActivity.this, InsertActivity.class));
                         break;
-                    case 1 :
-                        startActivity(new Intent(ListActivity.this,BackupActivity.class));
+                    case 1:
+                        startActivity(new Intent(ListActivity.this, BackupActivity.class));
                         break;
-                    case 2 :
-                        startActivity(new Intent(ListActivity.this,SettingActivity.class));
+                    case 2:
+                        startActivity(new Intent(ListActivity.this, SettingActivity.class));
                         break;
-                    case 3 :
-                        startActivity(new Intent(ListActivity.this,InfoActivity.class));
+                    case 3:
+                        startActivity(new Intent(ListActivity.this, InfoActivity.class));
                         break;
-                    case 4 :
+                    case 4:
                         finish();
                         break;
                 }
@@ -117,6 +120,7 @@ public class ListActivity extends ActionBarActivity {
         /*将日记列表填充至listView*/
         inflater();
     }
+
     /*设置侧滑菜单List，并返回*/
     private List<Map<String, Object>> getData() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
@@ -174,7 +178,7 @@ public class ListActivity extends ActionBarActivity {
                 TextView textView = (TextView) findViewById(R.id.textView);
                 //确保查询结果中有"_id"列
                 SimpleCursorAdapter adapter = new SimpleCursorAdapter(ListActivity.this, R.layout.list_item, c1,
-                        new String[]{"diary_label","diary_content","diary_date"}, new int[]{R.id.list_item_diary_label,R.id.list_item_diary_content,R.id.list_item_diary_date});
+                        new String[]{"diary_label", "diary_content", "diary_date"}, new int[]{R.id.list_item_diary_label, R.id.list_item_diary_content, R.id.list_item_diary_date});
                 if (adapter.isEmpty()) {
                     listView.setAdapter(null);
                     textView.setVisibility(View.VISIBLE);
@@ -187,11 +191,12 @@ public class ListActivity extends ActionBarActivity {
                             String id1 = c1.getString(0);
                             intent.putExtra("id", id1);
                             startActivity(intent);
-                         }
+                        }
                     });
                 }
                 return true;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 return false;
@@ -222,8 +227,8 @@ public class ListActivity extends ActionBarActivity {
         //使用SimpleCursorAdapter，必须确保查询结果中有"_id"列
         SimpleCursorAdapter adapter;
         adapter = new SimpleCursorAdapter(this, R.layout.list_item,
-            cursorWrapper, new String[]{"diary_label","diary_content" ,"diary_date","diary_mood","diary_weather"},
-            new int[]{R.id.list_item_diary_label , R.id.list_item_diary_content , R.id.list_item_diary_date ,R.id.img_mood ,R.id.img_weather});
+                cursorWrapper, new String[]{"diary_label", "diary_content", "diary_date", "diary_mood", "diary_weather"},
+                new int[]{R.id.list_item_diary_label, R.id.list_item_diary_content, R.id.list_item_diary_date, R.id.img_mood, R.id.img_weather});
 
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnItemClickListener() {

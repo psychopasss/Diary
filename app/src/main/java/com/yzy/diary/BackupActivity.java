@@ -39,7 +39,7 @@ public class BackupActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        switch(id){
+        switch (id) {
             case R.id.diary_list:
                 finish();
                 break;

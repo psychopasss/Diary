@@ -3,12 +3,11 @@
     android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.yzy.diary.MainActiity"
-    android:fitsSystemWindows="true">
+    tools:context="com.yzy.diary.MainActiity">
 
-    <include layout="@layout/mytoolbar"
-        />
+    <include layout="@layout/mytoolbar" />
 
     <!--
     用来取消焦点
@@ -17,63 +16,59 @@
         android:id="@+id/activity_insert_textView_diarylabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
         android:layout_below="@id/toolbar"
-        />
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
 
     <EditText
         android:id="@+id/activity_insert_editText_diarylabel"
-        android:layout_width="270dp"
+
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:singleLine="true"
-        android:hint="请输入标题"
         android:layout_below="@id/toolbar"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:ems="14"
+        android:hint="请输入标题"
+        android:inputType="text"
+        android:singleLine="true" />
 
     <EditText
         android:id="@+id/activity_insert_editText_diarycontent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/activity_insert_editText_diarylabel"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:background="@drawable/bg_edittext"
         android:gravity="top|start"
         android:inputType="textMultiLine"
-        android:minLines="25"
         android:paddingLeft="4dp"
         android:paddingRight="4dp"
-        android:scrollbars="vertical"
-        android:layout_below="@+id/activity_insert_editText_diarylabel"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:scrollbars="vertical" />
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/activity_insert_editText_diarylabel"
+        android:layout_alignEnd="@+id/activity_insert_editText_diarycontent"
         android:layout_alignRight="@+id/activity_insert_editText_diarycontent"
-        android:layout_alignEnd="@+id/activity_insert_editText_diarycontent">
+        android:layout_alignTop="@+id/activity_insert_editText_diarylabel"
+        android:orientation="horizontal">
+
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
             android:id="@+id/mood"
-            />
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
 
         <ImageView
+            android:id="@+id/weather"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:id="@+id/weather"
             android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            />
-        </LinearLayout>
-
-
+            android:layout_marginStart="5dp" />
+    </LinearLayout>
 
 
 </RelativeLayout>

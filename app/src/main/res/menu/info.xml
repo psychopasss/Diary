@@ -6,5 +6,5 @@
         android:id="@+id/diary_list"
         android:icon="@drawable/ic_navigation_cancel"
         android:title="@string/diary_list"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 </menu>

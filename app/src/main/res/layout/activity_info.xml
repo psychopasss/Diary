@@ -2,28 +2,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yzy.diary.InfoActivity"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:context="com.yzy.diary.InfoActivity">
 
-    <include layout="@layout/mytoolbar"/>
+    <include layout="@layout/mytoolbar" />
 
     <ImageView
-        android:contentDescription="@null"
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@mipmap/ic_launcher"
         android:layout_below="@id/toolbar"
-        android:layout_marginTop="70dp"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_marginTop="70dp"
+        android:contentDescription="@null"
+        android:src="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/activity_info_textView_appname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/imageView"
+        android:layout_centerHorizontal="true"
         android:text="@string/diary_info"
         android:textSize="20sp" />
 
@@ -34,8 +33,7 @@
         android:layout_below="@+id/activity_info_textView_appname"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="8dp"
-        android:text="@string/diary_version"
-        />
+        android:text="@string/diary_version" />
 
     <TextView
         android:id="@+id/activity_info_textView_designer"
@@ -56,15 +54,15 @@
         android:text="@string/designer_website" />
 
     <TextView
-        android:textColor="@color/update_logs"
+        android:id="@+id/activity_info_textView_update_logs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/activity_info_textView_update_logs"
-        android:id="@+id/activity_info_textView_update_logs"
-        android:layout_below="@+id/activity_info_textView_weibo"
         android:layout_alignLeft="@+id/activity_info_textView_weibo"
         android:layout_alignStart="@+id/activity_info_textView_weibo"
-        android:layout_marginTop="8dp" />
+        android:layout_below="@+id/activity_info_textView_weibo"
+        android:layout_marginTop="8dp"
+        android:text="@string/activity_info_textView_update_logs"
+        android:textColor="@color/update_logs" />
 
 
 </RelativeLayout>

@@ -1,9 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context="com.yzy.diary.SettingActivity">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.yzy.diary.SettingActivity">
     <item
         android:id="@+id/diary_list"
         android:icon="@drawable/ic_navigation_cancel"
         android:title="@string/diary_list"
-        app:showAsAction="always"/>
+        app:showAsAction="always" />
 </menu>
