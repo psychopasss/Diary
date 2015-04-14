@@ -12,11 +12,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -36,6 +38,7 @@ public class UpdateActivity extends ActionBarActivity {
     public ImageView mood, weather;
     public GridView gridView;
     private PopupWindow popupWindow;
+    private int wh;
     int[] moods = new int[]{
             R.drawable.mood1, R.drawable.mood2, R.drawable.mood3,
             R.drawable.mood4, R.drawable.mood5, R.drawable.mood6,
@@ -53,6 +56,9 @@ public class UpdateActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
+        WindowManager windowManager = getWindowManager();
+        Display display = windowManager.getDefaultDisplay();
+        wh = display.getWidth();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             SystemBarTintManager tintManager = new SystemBarTintManager(this);
             tintManager.setStatusBarTintEnabled(true);
@@ -151,7 +157,7 @@ public class UpdateActivity extends ActionBarActivity {
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View root = inflater.inflate(R.layout.popup, null);
         gridView = (GridView) root.findViewById(R.id.gridView);
-        popupWindow = new PopupWindow(root, 500, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow = new PopupWindow(root, wh / 3, ViewGroup.LayoutParams.WRAP_CONTENT);
         SimpleAdapter adapter = new SimpleAdapter(UpdateActivity.this,
                 getData(s), R.layout.popup_item, new String[]{"item_img"}
                 , new int[]{R.id.popup_item});
@@ -170,6 +176,10 @@ public class UpdateActivity extends ActionBarActivity {
                 }
             }
         });
+
+        //设置popwindow获取焦点，不然item监听不到事件。在android4.4之上不需要设置，之下都要设置
+        popupWindow.setFocusable(true);
+
         // 控制popupwindow点击屏幕其他地方消失
         popupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_popupwindow));// 设置背景图片，不能在布局中设置，要通过代码来设置
         popupWindow.setOutsideTouchable(true);// 触摸popupwindow外部，popupwindow消失。

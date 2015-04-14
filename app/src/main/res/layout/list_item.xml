@@ -2,77 +2,71 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="2dp"
     android:orientation="horizontal"
+    android:elevation="2dp"
     android:padding="4dp">
     <!--android:background="@drawable/list_item"-->
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:orientation="vertical">
+        android:id="@+id/linearLayout">
 
         <TextView
             android:id="@+id/list_item_diary_label"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
             android:ellipsize="marquee"
             android:singleLine="true"
             android:textColor="@color/primary_text"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:layout_marginLeft="12dp" />
 
         <TextView
             android:id="@+id/list_item_diary_content"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
             android:ellipsize="marquee"
             android:singleLine="true"
             android:textColor="@color/secondary_text"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginLeft="12dp" />
 
         <TextView
             android:id="@+id/list_item_diary_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
             android:textColor="@color/secondary_text"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            android:layout_marginLeft="12dp" />
     </LinearLayout>
 
     <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:weightSum="1">
 
         <ImageView
-            android:id="@+id/img_mood"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="9dp"
+            android:id="@+id/img_mood"
             android:layout_marginRight="9dp"
-            android:layout_toLeftOf="@+id/img_weather"
-            android:layout_toStartOf="@+id/img_weather" />
+            android:layout_marginEnd="9dp" />
 
         <ImageView
-            android:id="@+id/img_weather"
             android:layout_width="28dp"
             android:layout_height="28dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="14dp"
-            android:layout_marginRight="14dp" />
+            android:id="@+id/img_weather"
+            android:layout_marginRight="14dp"
+            android:layout_marginEnd="14dp" />
     </LinearLayout>
 
 </RelativeLayout>

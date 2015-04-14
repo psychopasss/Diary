@@ -15,7 +15,7 @@ public class Diary implements Serializable {
     private String weather;
     private String mood;
 
-    public Diary(){
+    public Diary() {
 
     }
 
@@ -24,14 +24,6 @@ public class Diary implements Serializable {
         this.content = content;
         this.mood = mood;
         this.weather = weather;
-    }
-
-    public void setLabel(String label) {
-        this.label = label;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public int get_id() {
@@ -46,8 +38,16 @@ public class Diary implements Serializable {
         return label;
     }
 
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
     public String getContent() {
         return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public Timestamp getDate() {

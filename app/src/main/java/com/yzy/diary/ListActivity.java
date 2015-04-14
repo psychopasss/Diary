@@ -58,6 +58,7 @@ public class ListActivity extends ActionBarActivity {
             tintManager.setStatusBarTintEnabled(true);
             tintManager.setStatusBarTintResource(R.color.colorPrimary);
         }
+
         /*Toolbar的设置，用来取代Actionbar，并接管Actionbar中的功能*/
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -160,6 +161,7 @@ public class ListActivity extends ActionBarActivity {
         /*搜索栏的设置*/
         MenuItem search = menu.findItem(R.id.list_search);
         SearchView sv = (SearchView) search.getActionView();
+        sv.setSubmitButtonEnabled(true);
         sv.setQueryHint("请输入关键字");
         sv.setIconifiedByDefault(true);
         sv.setOnCloseListener(new SearchView.OnCloseListener() {
@@ -218,8 +220,6 @@ public class ListActivity extends ActionBarActivity {
 
     /*为listView填充日记表列的方法*/
     private void inflater() {
-        final String mood;
-        final String weather;
         listView = (ListView) findViewById(R.id.activity_list_listview);
         final Cursor c = mgr.queryTheCursor();
         startManagingCursor(c);    //托付给activity根据自己的生命周期去管理Cursor的生命周期
