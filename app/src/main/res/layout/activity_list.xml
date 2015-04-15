@@ -48,7 +48,7 @@
                 android:layout_marginRight="16dp"
                 android:background="@drawable/ripple"
                 android:contentDescription="@null"
-                android:elevation="8dp"
+                android:elevation="6dp"
                 android:src="@drawable/ic_new"
                 android:tint="@android:color/white" />
         </RelativeLayout>

@@ -4,6 +4,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_size">40dp</dimen>
-    <dimen name="start_z">2dp</dimen>
-    <dimen name="end_z">5dp</dimen>
+    <dimen name="start_z">6dp</dimen>
+    <dimen name="end_z">12dp</dimen>
 </resources>
