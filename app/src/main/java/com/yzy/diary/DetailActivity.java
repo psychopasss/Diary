@@ -1,20 +1,20 @@
 package com.yzy.diary;
 
-import com.readystatesoftware.systembartint.SystemBarTintManager;
-import com.yzy.diary.dao.DBManager;
-import com.yzy.diary.model.Diary;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.os.Build;
-import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.yzy.diary.dao.DBManager;
+import com.yzy.diary.model.Diary;
 
 public class DetailActivity extends ActionBarActivity {
     private DBManager mgr;
@@ -41,10 +41,6 @@ public class DetailActivity extends ActionBarActivity {
         diary = mgr.query(id);
         toolbar.setTitle(diary.getLabel());
         diary_content.setText(diary.getContent());
-//         ImageView  mood = (ImageView)findViewById(R.id.detail_mood);
-//         ImageView  weather = (ImageView)findViewById(R.id.detail_weather);
-//         mood.setImageResource(Integer.parseInt(diary.getMood()));
-//         weather.setImageResource(Integer.parseInt(diary.getWeather()));
     }
 
     @Override
@@ -62,17 +58,22 @@ public class DetailActivity extends ActionBarActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id1 = item.getItemId();
         switch (id1) {
+            case R.id.diary_save:
+                mgr.recoverDiary(String.valueOf(id1));
+                Toast.makeText(DetailActivity.this, "日记恢复成功!", Toast.LENGTH_LONG).show();
+                finish();
+                break;
             case R.id.diary_delete:
                 AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle("要删除吗？").setMessage("将要删除此篇日记！")
                         .setPositiveButton("删除", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 try {
-                                    mgr.deleteDiary(id);
-                                    Toast.makeText(DetailActivity.this, "删除成功！", Toast.LENGTH_SHORT).show();
+                                    mgr.movetotrash(id);
+                                    Toast.makeText(DetailActivity.this, "已移至垃圾桶！", Toast.LENGTH_SHORT).show();
                                     finish();
                                 } catch (Exception x) {
-                                    Toast.makeText(DetailActivity.this, "删除失败！", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(DetailActivity.this, "移至垃圾桶失败！", Toast.LENGTH_SHORT).show();
                                     finish();
                                 }
                             }
@@ -94,4 +95,11 @@ public class DetailActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mgr.closeDB();
+    }
 }
+// TODO 垃圾桶内的日记可以单独删除.

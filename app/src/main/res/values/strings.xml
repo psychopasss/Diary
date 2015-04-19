@@ -5,7 +5,7 @@
      -->
     <string name="app_name">日日记</string>
     <string name="diary_info">日 日 记</string>
-    <string name="diary_version">版本号：2.1</string>
+    <string name="diary_version">版本号：2.1.2</string>
     <string name="app_designer">Design By Zain</string>
     <string name="designer_website"><a href="http://izain.info">个人博客</a></string>
     <string name="activity_info_textView_update_logs">更新日志</string>
@@ -44,6 +44,11 @@
         更新日志dialog界面
     -->
     <string name="update_logs">
+        ------------------v2.1.2----------------\n
+        新增垃圾桶，让你可以后悔。\n
+        修复bug：\n
+        修复搜索出的日记列表中不显示天气心情图标。\n
+        2015-4-18 \n
         ------------------v2.1.1----------------\n
         修复bug：\n
         1.修复之前日日记在android4.2版本以下出现FC；\n
@@ -101,5 +106,7 @@
         本日记软件的日记数据保存在SD卡根目录下diary文件夹下；\n
         具体路径“/diary/diary.db3”；\n
         如需备份日记数据，请把diary.db3文件保存在电脑上或者其他安全的地方。\n
-        恢复日记时只需要放在原位置（/diary/）下，就行了。</string>
+        恢复日记时只需将diary.db3文件放在原位置即sd卡中的diary文件夹下，即可恢复。</string>
+    <string name="title_activity_trash">垃圾桶</string>
+    <string name="trash_delete">清空</string>
 </resources>

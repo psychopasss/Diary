@@ -14,6 +14,7 @@ public class Diary implements Serializable {
     private Timestamp date;
     private String weather;
     private String mood;
+    private String type;
 
     public Diary() {
 
@@ -72,5 +73,13 @@ public class Diary implements Serializable {
 
     public void setMood(String mood) {
         this.mood = mood;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

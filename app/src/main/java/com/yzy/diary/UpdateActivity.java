@@ -1,16 +1,12 @@
 package com.yzy.diary;
 
-import com.readystatesoftware.systembartint.SystemBarTintManager;
-import com.yzy.diary.dao.DBManager;
-import com.yzy.diary.model.Diary;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Build;
-import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -27,18 +23,18 @@ import android.widget.PopupWindow;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.yzy.diary.dao.DBManager;
+import com.yzy.diary.model.Diary;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class UpdateActivity extends ActionBarActivity {
-    private DBManager mgr;
-    private Diary diary;
     public ImageView mood, weather;
     public GridView gridView;
-    private PopupWindow popupWindow;
-    private int wh;
     int[] moods = new int[]{
             R.drawable.mood1, R.drawable.mood2, R.drawable.mood3,
             R.drawable.mood4, R.drawable.mood5, R.drawable.mood6,
@@ -51,6 +47,10 @@ public class UpdateActivity extends ActionBarActivity {
             R.drawable.weather7, R.drawable.weather8, R.drawable.weather9,
             R.drawable.weather10, R.drawable.weather11, R.drawable.weather12
     };
+    private DBManager mgr;
+    private Diary diary;
+    private PopupWindow popupWindow;
+    private int wh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +129,6 @@ public class UpdateActivity extends ActionBarActivity {
     }
 
     private void diary_update() {
-        // TODO Auto-generated method stub
         String label = ((EditText) findViewById(R.id.activity_update_editText_diarylabel))
                 .getText().toString();
         String content = ((EditText) findViewById(R.id.activity_update_editText_diarycontent))
@@ -203,5 +202,11 @@ public class UpdateActivity extends ActionBarActivity {
             }
         }
         return list;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mgr.closeDB();
     }
 }

@@ -2,14 +2,13 @@ package com.yzy.diary;
 
 import android.app.AlertDialog;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.method.LinkMovementMethod;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;

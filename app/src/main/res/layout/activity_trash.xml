@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.yzy.diary.TrashActivity">
+
+    <include layout="@layout/mytoolbar" />
+
+    <ListView
+        android:id="@+id/activity_trash_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:elevation="5dp" />
+    <!--android:divider="@color/background_floating_material_light"-->
+    <!--android:dividerHeight="8dip"-->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="124dp"
+        android:text="@string/finderror"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:visibility="invisible" />
+
+</RelativeLayout>

@@ -70,7 +70,8 @@ public class ListActivity extends ActionBarActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_left);
         lvLeftMenu = (ListView) findViewById(R.id.lv_left_menu);
         //ActionBarDrawerToggle是一个开关，用于打开/关闭DrawerLayout抽屉
-        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open, R.string.close) {
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,
+                R.string.open, R.string.close) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -81,7 +82,8 @@ public class ListActivity extends ActionBarActivity {
                 super.onDrawerClosed(drawerView);
             }
         };
-        mDrawerToggle.syncState();//该方法会自动和actionBar关联, 将开关的图片显示在了action上，如果不设置，也可以有抽屉的效果，不过是默认的图标
+        mDrawerToggle.syncState();//该方法会自动和actionBar关联, 将开关的图片显示在了action上，
+        // 如果不设置，也可以有抽屉的效果，不过是默认的图标
         mDrawerLayout.setDrawerListener(mDrawerToggle);//设置drawer的开关监听
 
         /*填充侧滑菜单列表*/
@@ -100,15 +102,18 @@ public class ListActivity extends ActionBarActivity {
                         startActivity(new Intent(ListActivity.this, InsertActivity.class));
                         break;
                     case 1:
-                        startActivity(new Intent(ListActivity.this, BackupActivity.class));
+                        startActivity(new Intent(ListActivity.this, TrashActivity.class));
                         break;
                     case 2:
-                        startActivity(new Intent(ListActivity.this, SettingActivity.class));
+                        startActivity(new Intent(ListActivity.this, BackupActivity.class));
                         break;
                     case 3:
-                        startActivity(new Intent(ListActivity.this, InfoActivity.class));
+                        startActivity(new Intent(ListActivity.this, SettingActivity.class));
                         break;
                     case 4:
+                        startActivity(new Intent(ListActivity.this, InfoActivity.class));
+                        break;
+                    case 5:
                         finish();
                         break;
                 }
@@ -125,31 +130,20 @@ public class ListActivity extends ActionBarActivity {
     /*设置侧滑菜单List，并返回*/
     private List<Map<String, Object>> getData() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-
-        Map<String, Object> map = new HashMap<String, Object>();
-        map.put("title", "新建日记");
-        map.put("img", R.drawable.ic_1content_new);
-        list.add(map);
-
-        map = new HashMap<String, Object>();
-        map.put("title", "日记备份");
-        map.put("img", R.drawable.ic_1device_sd_storage);
-        list.add(map);
-
-        map = new HashMap<String, Object>();
-        map.put("title", "设置");
-        map.put("img", R.drawable.ic_1action_settings);
-        list.add(map);
-
-        map = new HashMap<String, Object>();
-        map.put("title", "关于");
-        map.put("img", R.drawable.ic_1action_about);
-        list.add(map);
-
-        map = new HashMap<String, Object>();
-        map.put("title", "退出");
-        map.put("img", R.drawable.ic_1navigation_cancel);
-        list.add(map);
+        String[] strings = new String[]{"新建日记", "垃圾桶", "日记备份",
+                "设置", "关于", "退出"};
+        int[] icons = new int[]{R.drawable.ic_1content_new,
+                R.drawable.ic_1content_discard, R.drawable.ic_1device_sd_storage,
+                R.drawable.ic_1action_settings, R.drawable.ic_1action_about,
+                R.drawable.ic_1navigation_cancel};
+        Map<String, Object> map;
+        int i;
+        for (i = 0; i < strings.length; i++) {
+            map = new HashMap<String, Object>();
+            map.put("title", strings[i]);
+            map.put("img", icons[i]);
+            list.add(map);
+        }
 
         return list;
     }
@@ -162,7 +156,7 @@ public class ListActivity extends ActionBarActivity {
         MenuItem search = menu.findItem(R.id.list_search);
         SearchView sv = (SearchView) search.getActionView();
         sv.setSubmitButtonEnabled(true);
-        sv.setQueryHint("请输入关键字");
+        sv.setQueryHint("可搜索内容,标题或时间");
         sv.setIconifiedByDefault(true);
         sv.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
@@ -180,7 +174,9 @@ public class ListActivity extends ActionBarActivity {
                 TextView textView = (TextView) findViewById(R.id.textView);
                 //确保查询结果中有"_id"列
                 SimpleCursorAdapter adapter = new SimpleCursorAdapter(ListActivity.this, R.layout.list_item, c1,
-                        new String[]{"diary_label", "diary_content", "diary_date"}, new int[]{R.id.list_item_diary_label, R.id.list_item_diary_content, R.id.list_item_diary_date});
+                        new String[]{"diary_label", "diary_content", "diary_date", "diary_mood", "diary_weather"},
+                        new int[]{R.id.list_item_diary_label, R.id.list_item_diary_content, R.id.list_item_diary_date
+                                , R.id.img_mood, R.id.img_weather});
                 if (adapter.isEmpty()) {
                     listView.setAdapter(null);
                     textView.setVisibility(View.VISIBLE);
@@ -228,8 +224,8 @@ public class ListActivity extends ActionBarActivity {
         SimpleCursorAdapter adapter;
         adapter = new SimpleCursorAdapter(this, R.layout.list_item,
                 cursorWrapper, new String[]{"diary_label", "diary_content", "diary_date", "diary_mood", "diary_weather"},
-                new int[]{R.id.list_item_diary_label, R.id.list_item_diary_content, R.id.list_item_diary_date, R.id.img_mood, R.id.img_weather});
-
+                new int[]{R.id.list_item_diary_label, R.id.list_item_diary_content,
+                        R.id.list_item_diary_date, R.id.img_mood, R.id.img_weather});
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

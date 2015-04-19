@@ -47,7 +47,6 @@ public class SettingActivity extends ActionBarActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
-                // TODO Auto-generated method stub
                 if (isChecked) {
                     editor.putBoolean("lockable", true);
                     editor.putString("key", preferences.getString("key", preferences.getString("key", "123")));
@@ -112,4 +111,5 @@ public class SettingActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

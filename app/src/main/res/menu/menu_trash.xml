@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="com.yzy.diary.TrashActivity">
+    <item
+        android:id="@+id/trash_search"
+        android:title="@string/search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/trash_delete"
+        android:title="@string/trash_delete"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/diary_list"
+        android:icon="@drawable/ic_navigation_cancel"
+        android:title="@string/diary_list"
+         />
+</menu>

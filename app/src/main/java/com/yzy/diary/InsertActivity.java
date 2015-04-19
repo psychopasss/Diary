@@ -30,11 +30,8 @@ import java.util.List;
 import java.util.Map;
 
 public class InsertActivity extends ActionBarActivity {
-    private DBManager mgr;
     public ImageView mood, weather;
     public GridView gridView;
-    private PopupWindow popupWindow;
-    private int wh;
     int[] moods = new int[]{
             R.drawable.mood1, R.drawable.mood2, R.drawable.mood3,
             R.drawable.mood4, R.drawable.mood5, R.drawable.mood6,
@@ -47,6 +44,9 @@ public class InsertActivity extends ActionBarActivity {
             R.drawable.weather7, R.drawable.weather8, R.drawable.weather9,
             R.drawable.weather10, R.drawable.weather11, R.drawable.weather12
     };
+    private DBManager mgr;
+    private PopupWindow popupWindow;
+    private int wh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,7 +154,7 @@ public class InsertActivity extends ActionBarActivity {
                 diary_save();
                 break;
             case R.id.diary_list:
-                finish();
+                draft_save();
                 break;
         }
         return true;
@@ -180,5 +180,33 @@ public class InsertActivity extends ActionBarActivity {
             Toast.makeText(InsertActivity.this, "日记保存失败！", Toast.LENGTH_SHORT).show();
             finish();
         }
+    }
+
+    private void draft_save() {
+        String label = ((EditText) findViewById(R.id.activity_insert_editText_diarylabel))
+                .getText().toString();
+        String content = ((EditText) findViewById(R.id.activity_insert_editText_diarycontent))
+                .getText().toString();
+        String mood = findViewById(R.id.mood).getTag().toString();
+        String weather = findViewById(R.id.weather).getTag().toString();
+        if (label.length() < 1) {
+            finish();
+        } else {
+            try {
+                Diary diary = new Diary(label, content, mood, weather);
+                mgr.movetodraft(diary);
+                Toast.makeText(InsertActivity.this, "已移至垃圾桶!", Toast.LENGTH_SHORT).show();
+                finish();
+            } catch (Exception x) {
+                Toast.makeText(InsertActivity.this, "移至垃圾桶失败!", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mgr.closeDB();
     }
 }

@@ -48,21 +48,21 @@
         android:id="@+id/activity_info_textView_weibo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="37dp"
+        android:text="@string/designer_website"
         android:layout_below="@+id/activity_info_textView_designer"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
-        android:text="@string/designer_website" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/activity_info_textView_update_logs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/activity_info_textView_update_logs"
+        android:textColor="@color/update_logs"
+        android:layout_below="@+id/activity_info_textView_weibo"
         android:layout_alignLeft="@+id/activity_info_textView_weibo"
         android:layout_alignStart="@+id/activity_info_textView_weibo"
-        android:layout_below="@+id/activity_info_textView_weibo"
-        android:layout_marginTop="8dp"
-        android:text="@string/activity_info_textView_update_logs"
-        android:textColor="@color/update_logs" />
+        android:layout_marginTop="10dp" />
 
 
 </RelativeLayout>

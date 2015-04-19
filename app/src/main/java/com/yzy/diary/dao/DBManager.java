@@ -25,8 +25,8 @@ public class DBManager {
     public void add(Diary diary) {
         db.beginTransaction();    //开始事务
         try {
-            db.execSQL("insert into diary(diary_label,diary_content,diary_mood,diary_weather) values(?,?,?,?)",
-                    new Object[]{diary.getLabel(), diary.getContent(), diary.getMood(), diary.getWeather()});
+            db.execSQL("insert into diary(diary_label,diary_content,diary_mood,diary_weather,diary_type) values(?,?,?,?,?)",
+                    new Object[]{diary.getLabel(), diary.getContent(), diary.getMood(), diary.getWeather(), "useful"});
             db.setTransactionSuccessful();    //设置事务成功完成
         } finally {
             db.endTransaction();    //结束事务
@@ -48,6 +48,20 @@ public class DBManager {
         db.delete("diary", "_id = ?", new String[]{id});
     }
 
+    /**
+     * delete diary to draft
+     */
+    public void movetodraft(Diary diary) {
+        db.execSQL("insert into diary(diary_label,diary_content,diary_mood,diary_weather,diary_type) values(?,?,?,?,?) ",
+                new Object[]{diary.getLabel(), diary.getContent(), diary.getMood(), diary.getWeather(), "trash"});
+    }
+
+    /**
+     * delete diary to draft
+     */
+    public void movetotrash(String id) {
+        db.execSQL("update diary set diary_type = ? where _id = ? ", new String[]{"trash", id});
+    }
 
     /**
      * query all diaries, return list
@@ -77,7 +91,18 @@ public class DBManager {
      * @return Cursor
      */
     public Cursor queryTheCursor() {
-        c = db.rawQuery("SELECT * FROM diary ORDER BY diary_date DESC", null);
+        c = db.rawQuery("SELECT * FROM diary  where diary_type = ? ORDER BY diary_date DESC", new String[]{"useful"});
+        return c;
+    }
+
+
+    /**
+     * query all drafts, return cursor
+     *
+     * @return Cursor
+     */
+    public Cursor queryTrash() {
+        c = db.rawQuery("SELECT * FROM diary  where diary_type = ? ORDER BY diary_date DESC", new String[]{"trash"});
         return c;
     }
 
@@ -87,7 +112,20 @@ public class DBManager {
      * @return Cursor
      */
     public Cursor find(String key) {
-        c = db.rawQuery("SELECT * FROM diary where diary_content like ? or diary_label like ? ", new String[]{"%" + key + "%", "%" + key + "%"});
+        c = db.rawQuery("SELECT * FROM diary where diary_content like ? or diary_label like ? or " +
+                "diary_date like ? and diary_type = ?", new String[]{"%" + key + "%", "%" + key + "%", "%" + key + "%", "useful"});
+        return c;
+    }
+
+
+    /**
+     * query the trashes from the key, return cursor
+     *
+     * @return Cursor
+     */
+    public Cursor findTrash(String key) {
+        c = db.rawQuery("SELECT * FROM diary where diary_type = ? and (diary_content like ? or diary_label like ? or " +
+                "diary_date like ?)", new String[]{"trash", "%" + key + "%", "%" + key + "%", "%" + key + "%"});
         return c;
     }
 
@@ -108,5 +146,12 @@ public class DBManager {
         db.close();
     }
 
+    public void deleteAllDiary() {
+        db.delete("diary", "diary_type = ?", new String[]{"trash"});
+    }
+
+    public void recoverDiary(String id1) {
+        db.execSQL("update diary set diary_type = ? where _id = ?", new String[]{"useful", id1});
+    }
 }
             
