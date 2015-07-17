@@ -62,7 +62,8 @@ public class TrashActivity extends ActionBarActivity {
         //使用SimpleCursorAdapter，必须确保查询结果中有"_id"列
         SimpleCursorAdapter adapter;
         adapter = new SimpleCursorAdapter(this, R.layout.list_item,
-                cursorWrapper, new String[]{"diary_label", "diary_content", "diary_date", "diary_mood", "diary_weather"},
+                cursorWrapper, new String[]{"diary_label", "diary_content", "diary_date",
+                "diary_mood", "diary_weather"},
                 new int[]{R.id.list_item_diary_label, R.id.list_item_diary_content,
                         R.id.list_item_diary_date, R.id.img_mood, R.id.img_weather});
 
@@ -103,10 +104,14 @@ public class TrashActivity extends ActionBarActivity {
                 final Cursor c1 = mgr.findTrash(query);
                 TextView textView = (TextView) findViewById(R.id.textView);
                 //确保查询结果中有"_id"列
-                SimpleCursorAdapter adapter = new SimpleCursorAdapter(TrashActivity.this, R.layout.list_item, c1,
-                        new String[]{"diary_label", "diary_content", "diary_date", "diary_mood", "diary_weather"},
-                        new int[]{R.id.list_item_diary_label, R.id.list_item_diary_content, R.id.list_item_diary_date
+                SimpleCursorAdapter adapter = new SimpleCursorAdapter(
+                        TrashActivity.this, R.layout.list_item, c1,
+                        new String[]{"diary_label", "diary_content",
+                                "diary_date", "diary_mood", "diary_weather"},
+                        new int[]{R.id.list_item_diary_label, R.id.list_item_diary_content,
+                                R.id.list_item_diary_date
                                 , R.id.img_mood, R.id.img_weather});
+
                 if (adapter.isEmpty()) {
                     listView.setAdapter(null);
                     textView.setVisibility(View.VISIBLE);
@@ -144,16 +149,19 @@ public class TrashActivity extends ActionBarActivity {
                 finish();
                 break;
             case R.id.trash_delete:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle("要清空吗？").setMessage("将要清空垃圾桶内所有日记！")
+                AlertDialog.Builder builder = new AlertDialog.Builder(this).setTitle("要清空吗？")
+                        .setMessage("将要清空垃圾桶内所有日记！")
                         .setPositiveButton("清空", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 try {
                                     mgr.deleteAllDiary();
                                     inflater();
-                                    Toast.makeText(TrashActivity.this, "已清空！", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(TrashActivity.this, "已清空！", Toast.LENGTH_SHORT)
+                                            .show();
                                 } catch (Exception x) {
-                                    Toast.makeText(TrashActivity.this, "清空失败！", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(TrashActivity.this, "清空失败！", Toast.LENGTH_SHORT)
+                                            .show();
                                     finish();
                                 }
                             }

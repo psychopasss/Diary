@@ -18,8 +18,8 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 
 public class SettingActivity extends ActionBarActivity {
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

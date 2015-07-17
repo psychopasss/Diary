@@ -37,14 +37,42 @@ public class ListActivity extends ActionBarActivity {
     private SimpleAdapter simpleAdapter;
     private DrawerLayout mDrawerLayout;
     private ListView lvLeftMenu;
+    private SimpleCursorAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        /*界面中浮动按钮的设置，绑定新建日记activity*/
+        //判断当前android系统是否位于4.4之上，是的话，启动系统沉浸栏
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(R.color.colorPrimary);
+        }
+
+        initView();
+
+        //将日记列表填充至listView
+        inflater();
+    }
+
+    private void initView() {
+        //初始化DBManager对象，为数据提供增删改查的功能
+        mgr = new DBManager(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         ImageButton imageButton = (ImageButton) findViewById(R.id.fab);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_left);
+        listView = (ListView) findViewById(R.id.activity_list_listview);
+        lvLeftMenu = (ListView) findViewById(R.id.lv_left_menu);
+
+        //Toolbar的设置，用来取代Actionbar，并接管Actionbar中的功能
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeButtonEnabled(true);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+        //界面中浮动按钮的设置，绑定新建日记activity
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,23 +80,7 @@ public class ListActivity extends ActionBarActivity {
             }
         });
 
-        /*判断当前android系统是否位于4.4之上，是的话，启动系统沉浸栏*/
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            SystemBarTintManager tintManager = new SystemBarTintManager(this);
-            tintManager.setStatusBarTintEnabled(true);
-            tintManager.setStatusBarTintResource(R.color.colorPrimary);
-        }
-
-        /*Toolbar的设置，用来取代Actionbar，并接管Actionbar中的功能*/
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeButtonEnabled(true);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-
-        /*侧滑菜单的设置*/
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.dl_left);
-        lvLeftMenu = (ListView) findViewById(R.id.lv_left_menu);
+        //侧滑菜单的设置
         //ActionBarDrawerToggle是一个开关，用于打开/关闭DrawerLayout抽屉
         ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar,
                 R.string.open, R.string.close) {
@@ -86,14 +98,14 @@ public class ListActivity extends ActionBarActivity {
         // 如果不设置，也可以有抽屉的效果，不过是默认的图标
         mDrawerLayout.setDrawerListener(mDrawerToggle);//设置drawer的开关监听
 
-        /*填充侧滑菜单列表*/
+        //填充侧滑菜单列表
         simpleAdapter = new SimpleAdapter(this, getData(),
                 R.layout.drawerlayout_left_item,
                 new String[]{"title", "img"},
                 new int[]{R.id.dl_left_item_label, R.id.dl_left_item_imageView});
         lvLeftMenu.setAdapter(simpleAdapter);
 
-        /* 为侧滑菜单中的选项绑定将要启动的activity*/
+        // 为侧滑菜单中的选项绑定将要启动的activity
         lvLeftMenu.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -120,14 +132,9 @@ public class ListActivity extends ActionBarActivity {
             }
         });
 
-        /*初始化DBManager对象，为数据提供增删改查的功能*/
-        mgr = new DBManager(this);
-
-        /*将日记列表填充至listView*/
-        inflater();
     }
 
-    /*设置侧滑菜单List，并返回*/
+    //设置侧滑菜单List，并返回
     private List<Map<String, Object>> getData() {
         List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
         String[] strings = new String[]{"新建日记", "垃圾桶", "日记备份",
@@ -152,11 +159,11 @@ public class ListActivity extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.list, menu);
 
-        /*搜索栏的设置*/
+        //搜索栏的设置
         MenuItem search = menu.findItem(R.id.list_search);
         SearchView sv = (SearchView) search.getActionView();
         sv.setSubmitButtonEnabled(true);
-        sv.setQueryHint("可搜索内容,标题或时间");
+        sv.setQueryHint("内容,标题或时间");
         sv.setIconifiedByDefault(true);
         sv.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
@@ -203,25 +210,14 @@ public class ListActivity extends ActionBarActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        return super.onOptionsItemSelected(item);
-    }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mgr.closeDB();
-    }
-
-    /*为listView填充日记表列的方法*/
+    //为listView填充日记表列的方法
     private void inflater() {
-        listView = (ListView) findViewById(R.id.activity_list_listview);
+
         final Cursor c = mgr.queryTheCursor();
         startManagingCursor(c);    //托付给activity根据自己的生命周期去管理Cursor的生命周期
         final CursorWrapper cursorWrapper = new CursorWrapper(c);
         //使用SimpleCursorAdapter，必须确保查询结果中有"_id"列
-        SimpleCursorAdapter adapter;
         adapter = new SimpleCursorAdapter(this, R.layout.list_item,
                 cursorWrapper, new String[]{"diary_label", "diary_content", "diary_date", "diary_mood", "diary_weather"},
                 new int[]{R.id.list_item_diary_label, R.id.list_item_diary_content,
@@ -235,5 +231,12 @@ public class ListActivity extends ActionBarActivity {
                 startActivity(intent);
             }
         });
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mgr.closeDB();
     }
 }
